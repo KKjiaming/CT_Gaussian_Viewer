@@ -1,0 +1,15 @@
+[tool.black]
+target-version = ["py312"]
+line-length = 100
+extend-exclude = '/(data|output)/'
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+extend-exclude = ["data", "output"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["analysis_backend", "analysis_viewer", "camera_config", "density_viewer", "gaussian_analysis", "gs_renderer"]

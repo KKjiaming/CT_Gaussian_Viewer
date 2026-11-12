@@ -17,3 +17,4 @@ data/
 *.vtp
 *.log
 .DS_Store
+.ruff_cache/

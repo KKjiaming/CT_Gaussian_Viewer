@@ -194,6 +194,37 @@ A custom `--camera-save` path overrides the default camera destination. Exports 
 
 ## Validation and limitations
 
+### Development checks
+
+Install the development tools in the activated environment:
+
+```bash
+python -m pip install -r requirements-dev.txt
+```
+
+Black owns Python formatting; Ruff checks imports, unused names, and selected
+syntax/style errors. Both use Python 3.12 and a 100-character target line length
+configured in `pyproject.toml`. Shader strings retain their GLSL formatting.
+
+```bash
+# Apply import fixes, then format Python.
+python -m ruff check --fix .
+python -m black .
+
+# Read-only checks before committing.
+python -m ruff check .
+python -m black --check .
+```
+
+Key geometry and evaluation functions document parameters, return values, units,
+and array orientation in their docstrings. World vectors and reference volumes use
+XYZ order. Slice rasters use `[row, column]` with a lower-edge row origin; screen
+right/up follow the remaining axes in ascending order. Internal selection and
+candidate arrays contain source row indices; persistent `original_ids` are used
+for user-facing identification and exports.
+
+### Tests
+
 Run the numerical and camera checks:
 
 ```bash
